@@ -50,19 +50,19 @@ export const GeneratorPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t('generator.title')}
             </h1>
             <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
               {t('generator.badge')}
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
             {t('generator.subtitle')} • CEI 60034 / ISO 8528
           </p>
         </div>
@@ -82,7 +82,7 @@ export const GeneratorPage: React.FC = () => {
       {/* Hospital Warning per Section 18 */}
       {currentProject.projectType === 'hospital' && (
         <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-900 dark:text-rose-200 text-xs space-y-1.5">
-          <div className="font-bold flex items-center gap-2 text-rose-800 dark:text-rose-300">
+          <div className="font-semibold flex items-center gap-2 text-rose-800 dark:text-rose-300">
             <AlertTriangleIcon className="w-5 h-5 text-rose-500 shrink-0" />
             <span>AVERTISSEMENT HOSPITALIER : LE GROUPE ÉLECTROGÈNE NE SUFFIT PAS</span>
           </div>
@@ -94,34 +94,34 @@ export const GeneratorPage: React.FC = () => {
       )}
 
       {/* Configurable Margin Controls */}
-      <div className="p-4 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="p-5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold text-slate-900 dark:text-white">
+          <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             {t('generator.engineeringMargin')} (Configurable)
           </div>
-          <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+          <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
             Réserve de puissance pour extensions futures et usure alternateur (10% à 25%)
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-950/60 p-0.5 gap-0.5">
+          <div className="inline-flex rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 p-0.5 gap-0.5">
             {[10, 15, 20, 25].map(m => (
               <button
                 key={m}
                 type="button"
                 onClick={() => handleUpdateMargin(m)}
-                className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-md text-xs font-mono font-medium transition-all cursor-pointer ${
                   marginPct === m
-                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-emerald-600 text-white font-semibold shadow-xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
                 }`}
               >
                 +{m}%
               </button>
             ))}
           </div>
-          <span className="font-mono text-xs font-bold text-slate-900 dark:text-white">
+          <span className="font-mono text-xs font-semibold text-zinc-900 dark:text-zinc-100">
             Marge : {marginPct}%
           </span>
         </div>
@@ -166,10 +166,10 @@ export const GeneratorPage: React.FC = () => {
       {/* Priority Loads Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         <div className="p-4 rounded-xl border border-rose-500/20 bg-rose-500/[0.03] dark:bg-rose-500/[0.05]">
-          <div className="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+          <div className="text-xs font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400">
             {t('generator.essentialLoads')}
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-2">
+          <div className="text-2xl font-semibold font-mono text-zinc-900 dark:text-zinc-100 mt-2">
             {formatPower(gen.essentialLoads_kW, 'kW')}
           </div>
           <div className="text-xs text-rose-600/80 dark:text-rose-400/80 mt-1">
@@ -178,10 +178,10 @@ export const GeneratorPage: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-500/[0.03] dark:bg-blue-500/[0.05]">
-          <div className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
             {t('generator.priorityLoads')}
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-2">
+          <div className="text-2xl font-semibold font-mono text-zinc-900 dark:text-zinc-100 mt-2">
             {formatPower(gen.priorityLoads_kW, 'kW')}
           </div>
           <div className="text-xs text-blue-600/80 dark:text-blue-400/80 mt-1">
@@ -189,23 +189,23 @@ export const GeneratorPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/70">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card">
+          <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             {t('generator.nonPriorityLoads')}
           </div>
-          <div className="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-2">
+          <div className="text-2xl font-semibold font-mono text-zinc-900 dark:text-zinc-100 mt-2">
             {formatPower(gen.nonPriorityLoads_kW, 'kW')}
           </div>
-          <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
             Délestage automatique lors du basculement
           </div>
         </div>
       </div>
 
       {/* Motor Inrush & Starting Analysis Table */}
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 overflow-hidden shadow-xs">
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800/80">
-          <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+      <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-card">
+        <div className="p-4 border-b border-zinc-100 dark:border-zinc-800">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             {t('generator.motorAnalysisTitle')}
           </h3>
         </div>
@@ -225,19 +225,19 @@ export const GeneratorPage: React.FC = () => {
               <tbody>
                 {gen.motorStartingConsiderations.map((motor, idx) => (
                   <tr key={idx}>
-                    <td className="font-medium text-slate-900 dark:text-white">
+                    <td className="font-medium text-zinc-900 dark:text-zinc-100">
                       {motor.loadName}
                     </td>
-                    <td className="text-right font-mono text-slate-700 dark:text-slate-300">
+                    <td className="text-right font-mono text-zinc-700 dark:text-zinc-300">
                       {formatPower(motor.ratedPower_kW, 'kW')}
                     </td>
-                    <td className="text-slate-600 dark:text-slate-400">
+                    <td className="text-zinc-600 dark:text-zinc-400">
                       {t(`loads.startingMethods.${motor.startingMethod}`)}
                     </td>
                     <td className="text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">
                       {motor.startingCurrentMultiplier}× In
                     </td>
-                    <td className="text-right font-mono font-bold text-slate-900 dark:text-white">
+                    <td className="text-right font-mono font-bold text-zinc-900 dark:text-zinc-100">
                       {motor.startingPower_kVA} kVA
                     </td>
                   </tr>
@@ -246,15 +246,15 @@ export const GeneratorPage: React.FC = () => {
             </table>
           </div>
         ) : (
-          <div className="p-4 text-center text-xs text-slate-400">
+          <div className="p-4 text-center text-xs text-zinc-400">
             {t('generator.noMotors')}
           </div>
         )}
       </div>
 
       {/* Limitations Notice */}
-      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-        <div className="font-semibold text-slate-800 dark:text-slate-200">
+      <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400 space-y-1">
+        <div className="font-semibold text-zinc-800 dark:text-zinc-200">
           Remarque d'ingénierie & Limites de l'estimation :
         </div>
         <p className="leading-relaxed">{t('generator.limitationsNotice')}</p>

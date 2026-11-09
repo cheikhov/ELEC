@@ -8,19 +8,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        eng: {
-          green: '#059669',     // Emerald-600: modern engineering accent
-          'green-hover': '#047857', // Emerald-700
-          'green-light': '#ecfdf5', // Emerald-50
-          'green-dark': '#10b981',  // Emerald-500
-          charcoal: '#090d16',  // Modern deep slate
-          panel: '#0f172a',     // Slate-900
-          border: '#1e293b',    // Slate-800
+        // shadcn/ui inspired zinc dark palette
+        background: '#09090b',
+        surface: '#18181b',
+        'surface-hover': '#27272a',
+        'surface-border': '#27272a',
+        muted: '#71717a',
+        'muted-foreground': '#a1a1aa',
+        primary: {
+          DEFAULT: '#10b981', // emerald-500
+          hover: '#059669',   // emerald-600
+          dark: '#047857',
+          foreground: '#ffffff',
+        },
+        accent: {
+          DEFAULT: '#10b981',
+          subtle: 'rgba(16, 185, 129, 0.1)',
+          border: 'rgba(16, 185, 129, 0.2)',
         },
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', 'monospace'],
+        mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
+      },
+      boxShadow: {
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px -1px rgba(0, 0, 0, 0.2)',
       },
     },
   },

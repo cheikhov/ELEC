@@ -172,20 +172,20 @@ export const LoadsPage: React.FC = () => {
   }, 0);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t('loads.title')}
             </h1>
-            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
               {currentProject.loads.length} récepteur(s)
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Projet : <span className="font-semibold text-slate-700 dark:text-slate-300">{currentProject.name}</span> • Réseau {currentProject.network.supplyVoltage}V {currentProject.network.phaseType === 'three_phase' ? 'Triphasé' : 'Monophasé'}
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            Projet : <span className="font-semibold text-zinc-700 dark:text-zinc-300">{currentProject.name}</span> • Réseau {currentProject.network.supplyVoltage}V {currentProject.network.phaseType === 'three_phase' ? 'Triphasé' : 'Monophasé'}
           </p>
         </div>
 
@@ -212,7 +212,7 @@ export const LoadsPage: React.FC = () => {
 
       {/* Modern Load Schedule Table */}
       {currentProject.loads.length > 0 ? (
-        <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 overflow-hidden shadow-xs">
+        <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-card">
           <div className="overflow-x-auto">
             <table className="eng-table">
               <thead>
@@ -238,13 +238,13 @@ export const LoadsPage: React.FC = () => {
                   return (
                     <tr key={load.id}>
                       <td>
-                        <div className="font-semibold text-slate-900 dark:text-white">{load.name}</div>
+                        <div className="font-semibold text-zinc-900 dark:text-zinc-100">{load.name}</div>
                         {load.notes && (
-                          <div className="text-xs text-slate-400 dark:text-slate-500 truncate max-w-xs mt-0.5">{load.notes}</div>
+                          <div className="text-xs text-zinc-400 dark:text-zinc-500 truncate max-w-xs mt-0.5">{load.notes}</div>
                         )}
                       </td>
 
-                      <td className="text-slate-600 dark:text-slate-400">
+                      <td className="text-zinc-600 dark:text-zinc-400">
                         {t(`loads.categories.${load.category}`)}
                       </td>
 
@@ -252,15 +252,15 @@ export const LoadsPage: React.FC = () => {
                         {load.quantity}
                       </td>
 
-                      <td className="text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="text-right font-mono text-zinc-700 dark:text-zinc-300">
                         {load.unitPower} {load.powerUnit}
                       </td>
 
-                      <td className="text-right font-mono text-slate-800 dark:text-slate-200">
+                      <td className="text-right font-mono text-zinc-800 dark:text-zinc-200">
                         {formatPower(inst_kW, 'kW')}
                       </td>
 
-                      <td className="text-center font-mono text-xs text-slate-500 dark:text-slate-400">
+                      <td className="text-center font-mono text-xs text-zinc-500 dark:text-zinc-400">
                         {load.utilizationFactor} / {load.simultaneityFactor}
                       </td>
 
@@ -268,7 +268,7 @@ export const LoadsPage: React.FC = () => {
                         {formatPower(dem_kW, 'kW')}
                       </td>
 
-                      <td className="text-center font-mono text-slate-700 dark:text-slate-300">
+                      <td className="text-center font-mono text-zinc-700 dark:text-zinc-300">
                         {load.powerFactor}
                       </td>
 
@@ -279,7 +279,7 @@ export const LoadsPage: React.FC = () => {
                               ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
                               : load.priority === 'priority'
                               ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20'
-                              : 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20'
+                              : 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border border-zinc-500/20'
                           }`}
                         >
                           {t(`loads.priorities.${load.priority}`)}
@@ -292,7 +292,7 @@ export const LoadsPage: React.FC = () => {
                             type="button"
                             onClick={() => handleOpenEditModal(load)}
                             title={t('common.edit')}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                           >
                             <EditIcon className="w-4 h-4" />
                           </button>
@@ -300,7 +300,7 @@ export const LoadsPage: React.FC = () => {
                             type="button"
                             onClick={() => deleteLoad(currentProject.id, load.id)}
                             title={t('common.delete')}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                            className="p-1.5 rounded-lg text-zinc-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
                           >
                             <TrashIcon className="w-4 h-4" />
                           </button>
@@ -312,22 +312,22 @@ export const LoadsPage: React.FC = () => {
               </tbody>
               {/* Total Footer Row */}
               <tfoot>
-                <tr className="bg-slate-50 dark:bg-slate-900 border-t-2 border-slate-200 dark:border-slate-800 font-bold text-xs">
-                  <td colSpan={2} className="py-3 px-4 uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                <tr className="bg-zinc-50 dark:bg-zinc-900 border-t-2 border-zinc-200 dark:border-zinc-800 font-bold text-xs">
+                  <td colSpan={2} className="py-3 px-4 uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                     Total Bilan ({currentProject.loads.length} récepteurs)
                   </td>
                   <td className="py-3 px-2 text-center font-mono">
                     {currentProject.loads.reduce((acc, l) => acc + l.quantity, 0)}
                   </td>
-                  <td className="py-3 px-3 text-right text-slate-400">—</td>
-                  <td className="py-3 px-3 text-right font-mono text-slate-900 dark:text-white">
+                  <td className="py-3 px-3 text-right text-zinc-400">—</td>
+                  <td className="py-3 px-3 text-right font-mono text-zinc-900 dark:text-zinc-100">
                     {formatPower(totalInst_kW, 'kW')}
                   </td>
-                  <td className="py-3 px-2 text-center text-slate-400">—</td>
+                  <td className="py-3 px-2 text-center text-zinc-400">—</td>
                   <td className="py-3 px-3 text-right font-mono text-emerald-600 dark:text-emerald-400 text-sm">
                     {formatPower(totalDemand_kW, 'kW')}
                   </td>
-                  <td colSpan={3} className="py-3 px-4 text-right text-xs text-slate-500 font-normal">
+                  <td colSpan={3} className="py-3 px-4 text-right text-xs text-zinc-500 font-normal">
                     P. demandée totale
                   </td>
                 </tr>
@@ -347,17 +347,17 @@ export const LoadsPage: React.FC = () => {
 
       {/* Add / Edit Load Modal Dialog */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-xs overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden my-8">
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800/80">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-100 dark:border-zinc-800">
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 {editingLoadId ? t('loads.editLoad') : t('loads.addLoad')}
               </h3>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 p-1 rounded-md"
               >
                 <XIcon className="w-5 h-5" />
               </button>
@@ -367,7 +367,7 @@ export const LoadsPage: React.FC = () => {
             <div className="p-6 space-y-4 max-h-[80vh] overflow-y-auto text-xs">
               {formErrors.length > 0 && (
                 <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-800 dark:text-rose-200 space-y-1">
-                  <div className="font-bold">{t('common.requiredInfoMissing')} :</div>
+                  <div className="font-semibold">{t('common.requiredInfoMissing')} :</div>
                   {formErrors.map((e, idx) => (
                     <div key={idx}>• {e}</div>
                   ))}
@@ -375,14 +375,14 @@ export const LoadsPage: React.FC = () => {
               )}
 
               {/* 1. Identification */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 space-y-3">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   1. Identification du Récepteur
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.name')} *
                     </label>
                     <input
@@ -395,7 +395,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.category')} *
                     </label>
                     <select
@@ -419,14 +419,14 @@ export const LoadsPage: React.FC = () => {
               </div>
 
               {/* 2. Electrical characteristics */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 space-y-3">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   2. Caractéristiques Électriques
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.quantity')} *
                     </label>
                     <input
@@ -439,7 +439,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.unitPower')} *
                     </label>
                     <div className="flex gap-1.5">
@@ -465,7 +465,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.loadType')}
                     </label>
                     <select
@@ -479,7 +479,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       cos φ *
                     </label>
                     <input
@@ -496,14 +496,14 @@ export const LoadsPage: React.FC = () => {
               </div>
 
               {/* 3. Factors */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 space-y-3">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   3. Facteurs de Calcul & Sécurité
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       Ku (Utilisation)
                     </label>
                     <input
@@ -518,7 +518,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       Ks (Simultanéité)
                     </label>
                     <input
@@ -533,7 +533,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       Rendement (η)
                     </label>
                     <input
@@ -550,14 +550,14 @@ export const LoadsPage: React.FC = () => {
               </div>
 
               {/* 4. Motor and Priority */}
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 space-y-3">
-                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   4. Démarrage Moteur & Secours
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.startingMethod')}
                     </label>
                     <select
@@ -575,7 +575,7 @@ export const LoadsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                       {t('loads.form.priority')}
                     </label>
                     <select
@@ -591,7 +591,7 @@ export const LoadsPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                  <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                     {t('loads.form.notes')}
                   </label>
                   <input
@@ -606,7 +606,7 @@ export const LoadsPage: React.FC = () => {
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 dark:bg-slate-950/60 border-t border-slate-100 dark:border-slate-800/80">
+            <div className="flex items-center justify-end gap-3 px-6 py-4 bg-zinc-50/50 dark:bg-zinc-950/60 border-t border-zinc-100 dark:border-zinc-800">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}

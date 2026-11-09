@@ -55,19 +55,19 @@ export const ProtectionPage: React.FC = () => {
     (recommendations[0]?.nominalCurrent_A || 0) <= cableCapacity_A;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t('protection.title')}
             </h1>
-            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
               CEI 60364-4-43 & 4-41
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
             {t('protection.subtitle')} • Règle fondamentale : Ib ≤ In ≤ Iz
           </p>
         </div>
@@ -87,13 +87,13 @@ export const ProtectionPage: React.FC = () => {
       {/* Two Column Layout: Circuit parameters vs Protection Recommendations */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Left Column: Circuit Parameters */}
-        <div className="lg:col-span-5 p-5 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs space-y-4">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div className="lg:col-span-5 p-5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-4">
+          <div className="text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 pb-2 border-b border-zinc-100 dark:border-zinc-800">
             Paramètres du Circuit à Protéger
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
               {t('protection.designCurrent')} (Ib) *
             </label>
             <div className="relative">
@@ -104,12 +104,12 @@ export const ProtectionPage: React.FC = () => {
                 onChange={e => setDesignCurrent_A(parseFloat(e.target.value) || 0)}
                 className="eng-input font-mono font-bold pr-8 w-full"
               />
-              <span className="absolute right-3 top-2 text-xs font-mono text-slate-400">A</span>
+              <span className="absolute right-3 top-2 text-xs font-mono text-zinc-400">A</span>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
               {t('protection.cableCapacity')} (Iz admissible déclassé) *
             </label>
             <div className="relative">
@@ -120,15 +120,15 @@ export const ProtectionPage: React.FC = () => {
                 onChange={e => setCableCapacity_A(parseFloat(e.target.value) || 0)}
                 className="eng-input font-mono font-bold pr-8 w-full"
               />
-              <span className="absolute right-3 top-2 text-xs font-mono text-slate-400">A</span>
+              <span className="absolute right-3 top-2 text-xs font-mono text-zinc-400">A</span>
             </div>
-            <p className="text-[11px] text-slate-400 mt-1">
+            <p className="text-[11px] text-zinc-400 mt-1">
               Condition fondamentale : Ib ≤ In ≤ Iz
             </p>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
               Courant de Court-Circuit Présumé (Icc amont)
             </label>
             <div className="relative">
@@ -139,13 +139,13 @@ export const ProtectionPage: React.FC = () => {
                 onChange={e => setShortCircuitCurrent_kA(parseFloat(e.target.value) || 0)}
                 className="eng-input font-mono pr-9 w-full"
               />
-              <span className="absolute right-3 top-2 text-xs font-mono text-slate-400">kA</span>
+              <span className="absolute right-3 top-2 text-xs font-mono text-zinc-400">kA</span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">
                 Catégorie de charge
               </label>
               <select
@@ -164,7 +164,7 @@ export const ProtectionPage: React.FC = () => {
             </div>
 
             <div className="flex items-center pt-5">
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-700 dark:text-slate-300 font-medium">
+              <label className="flex items-center gap-2 cursor-pointer text-xs text-zinc-700 dark:text-zinc-300 font-medium">
                 <input
                   type="checkbox"
                   checked={isMotor}
@@ -180,22 +180,22 @@ export const ProtectionPage: React.FC = () => {
         {/* Right Column: Protective Devices Recommendations */}
         <div className="lg:col-span-7 space-y-4">
           {/* Engineering Compliance Status Strip */}
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs flex items-center justify-between">
+          <div className="p-4 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card flex items-center justify-between">
             <div>
-              <div className="text-xs font-medium text-slate-400">
+              <div className="text-xs font-medium text-zinc-400">
                 Condition Normative de Protection
               </div>
-              <div className="text-base font-bold font-mono text-slate-900 dark:text-white mt-0.5">
+              <div className="text-base font-semibold font-mono text-zinc-900 dark:text-zinc-100 mt-0.5">
                 {designCurrent_A} A (Ib) ≤ {recommendations[0]?.nominalCurrent_A} A (In) ≤ {cableCapacity_A} A (Iz)
               </div>
             </div>
             <div>
               {isCompliant ? (
-                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-mono font-semibold">
                   ✓ CONFORME
                 </span>
               ) : (
-                <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-mono font-semibold">
                   ✕ NON CONFORME
                 </span>
               )}
@@ -207,47 +207,47 @@ export const ProtectionPage: React.FC = () => {
             {recommendations.map((rec, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs space-y-3"
+                className="p-4 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-3"
               >
-                <div className="flex items-start justify-between gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800/80">
+                <div className="flex items-start justify-between gap-2 pb-2.5 border-b border-zinc-100 dark:border-zinc-800">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                    <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       {rec.deviceType === 'circuit_breaker' && t('protection.circuitBreaker')}
                       {rec.deviceType === 'rcd' && t('protection.rcd')}
                       {rec.deviceType === 'thermal_relay' && t('protection.thermalRelay')}
                     </h3>
                   </div>
 
-                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+                  <span className="font-mono text-xs font-medium px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
                     In = {rec.nominalCurrent_A} A
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-mono">
                   {rec.tripCurve && (
-                    <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800">
-                      <span className="text-slate-400 text-[11px]">Courbe : </span>
-                      <strong className="text-slate-900 dark:text-white">Courbe {rec.tripCurve}</strong>
+                    <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                      <span className="text-zinc-400 text-[11px]">Courbe : </span>
+                      <strong className="text-zinc-900 dark:text-zinc-100">Courbe {rec.tripCurve}</strong>
                     </div>
                   )}
 
                   {rec.rcdSensitivity_mA && (
-                    <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800">
-                      <span className="text-slate-400 text-[11px]">Sensibilité : </span>
+                    <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                      <span className="text-zinc-400 text-[11px]">Sensibilité : </span>
                       <strong className="text-emerald-600 dark:text-emerald-400">{rec.rcdSensitivity_mA} mA</strong>
                     </div>
                   )}
 
                   {rec.breakingCapacity_kA && (
-                    <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800">
-                      <span className="text-slate-400 text-[11px]">Icu requis : </span>
-                      <strong className="text-slate-900 dark:text-white">≥ {rec.breakingCapacity_kA} kA</strong>
+                    <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                      <span className="text-zinc-400 text-[11px]">Icu requis : </span>
+                      <strong className="text-zinc-900 dark:text-zinc-100">≥ {rec.breakingCapacity_kA} kA</strong>
                     </div>
                   )}
                 </div>
 
-                <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-600 dark:text-slate-400">
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-zinc-600 dark:text-zinc-400">
                   {rec.notes.map((note, nIdx) => (
                     <li key={nIdx}>{note}</li>
                   ))}
@@ -257,8 +257,8 @@ export const ProtectionPage: React.FC = () => {
           </div>
 
           {/* Coordination Notice per Section 11 */}
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-            <div className="font-semibold text-slate-800 dark:text-slate-200">
+          <div className="p-4 rounded-xl bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400 space-y-1">
+            <div className="font-semibold text-zinc-800 dark:text-zinc-200">
               Notice sur la coordination et la sélectivité :
             </div>
             <p className="leading-relaxed">{t('protection.coordinationNotice')}</p>

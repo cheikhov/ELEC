@@ -37,20 +37,20 @@ export const PowerBalancePage: React.FC = () => {
   const pb = currentProject.calculations.powerBalance;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t('powerBalance.title')}
             </h1>
-            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
               CEI 60364-1
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Projet : <span className="font-semibold text-slate-700 dark:text-slate-300">{currentProject.name}</span> • Réseau {currentProject.network.supplyVoltage}V {currentProject.network.phaseType === 'three_phase' ? '3P+N' : '1P+N'} • {currentProject.network.frequency}Hz
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            Projet : <span className="font-semibold text-zinc-700 dark:text-zinc-300">{currentProject.name}</span> • Réseau {currentProject.network.supplyVoltage}V {currentProject.network.phaseType === 'three_phase' ? '3P+N' : '1P+N'} • {currentProject.network.frequency}Hz
           </p>
         </div>
 
@@ -77,8 +77,8 @@ export const PowerBalancePage: React.FC = () => {
 
       {/* Warnings Alert */}
       {pb && pb.trace.warnings.length > 0 && (
-        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs space-y-1">
-          <div className="font-bold flex items-center gap-2 text-amber-800 dark:text-amber-300">
+        <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-200 text-xs space-y-1">
+          <div className="font-semibold flex items-center gap-2 text-amber-800 dark:text-amber-300">
             <AlertTriangleIcon className="w-4 h-4 text-amber-500 shrink-0" />
             <span>{t('common.warning')} (Ingénierie) :</span>
           </div>
@@ -158,9 +158,9 @@ export const PowerBalancePage: React.FC = () => {
           {/* Aggregations: By Category & By Priority in Modern Tables */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* By Category */}
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 overflow-hidden shadow-xs">
-              <div className="p-4 border-b border-slate-100 dark:border-slate-800/80">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-card">
+              <div className="p-4 border-b border-zinc-100 dark:border-zinc-800">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                   {t('powerBalance.byCategory')}
                 </h3>
               </div>
@@ -180,17 +180,17 @@ export const PowerBalancePage: React.FC = () => {
                       const share = pb.demandPower_kW > 0 ? (cat.demandPower_kW / pb.demandPower_kW) * 100 : 0;
                       return (
                         <tr key={cat.category}>
-                          <td className="font-medium text-slate-800 dark:text-slate-200">
+                          <td className="font-medium text-zinc-800 dark:text-zinc-200">
                             {t(`loads.categories.${cat.category}`)}
                           </td>
                           <td className="text-center font-mono">{cat.loadCount}</td>
-                          <td className="text-right font-mono text-slate-600 dark:text-slate-400">
+                          <td className="text-right font-mono text-zinc-600 dark:text-zinc-400">
                             {formatPower(cat.installedPower_kW, 'kW')}
                           </td>
                           <td className="text-right font-mono font-bold text-emerald-600 dark:text-emerald-400">
                             {formatPower(cat.demandPower_kW, 'kW')}
                           </td>
-                          <td className="text-right font-mono text-slate-500">
+                          <td className="text-right font-mono text-zinc-500">
                             {share.toFixed(1)} %
                           </td>
                         </tr>
@@ -202,9 +202,9 @@ export const PowerBalancePage: React.FC = () => {
             </div>
 
             {/* By Priority Level */}
-            <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 overflow-hidden shadow-xs">
-              <div className="p-4 border-b border-slate-100 dark:border-slate-800/80">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-card">
+              <div className="p-4 border-b border-zinc-100 dark:border-zinc-800">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                   {t('powerBalance.byPriority')} (Bilan Secours GE)
                 </h3>
               </div>
@@ -229,7 +229,7 @@ export const PowerBalancePage: React.FC = () => {
                                 ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
                                 : prio.priority === 'priority'
                                 ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20'
-                                : 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20'
+                                : 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border border-zinc-500/20'
                             }`}
                           >
                             {t(`loads.priorities.${prio.priority}`)}
@@ -242,7 +242,7 @@ export const PowerBalancePage: React.FC = () => {
                           {prio.priority !== 'non_priority' ? (
                             <span className="text-emerald-600 dark:text-emerald-400">OUI</span>
                           ) : (
-                            <span className="text-slate-400">DÉLESTÉ</span>
+                            <span className="text-zinc-400">DÉLESTÉ</span>
                           )}
                         </td>
                       </tr>
@@ -254,43 +254,43 @@ export const PowerBalancePage: React.FC = () => {
           </div>
 
           {/* Traceability Section per Section 15 */}
-          <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
+          <div className="p-5 rounded-xl bg-zinc-50/50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-3">
+            <div className="text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-emerald-500" />
               <span>{t('powerBalance.traceabilityTitle')} — Justification Mathématique</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-              <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                <div className="font-semibold text-slate-400 text-xs mb-1.5 uppercase">
+              <div className="p-3.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                <div className="font-semibold text-zinc-400 text-xs mb-1.5 uppercase">
                   {t('powerBalance.inputsUsed')} :
                 </div>
                 <div className="space-y-1 font-mono text-xs">
                   {Object.entries(pb.trace.inputs).map(([k, v]) => (
                     <div key={k} className="flex justify-between">
-                      <span className="text-slate-400">{k} :</span>
-                      <span className="font-bold text-slate-800 dark:text-slate-200">{v}</span>
+                      <span className="text-zinc-400">{k} :</span>
+                      <span className="font-bold text-zinc-800 dark:text-zinc-200">{v}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                <div className="font-semibold text-slate-400 text-xs mb-1.5 uppercase">
+              <div className="p-3.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                <div className="font-semibold text-zinc-400 text-xs mb-1.5 uppercase">
                   {t('powerBalance.assumptionsApplied')} :
                 </div>
-                <ul className="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300 text-xs">
+                <ul className="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300 text-xs">
                   {pb.trace.assumptions.map((asm, idx) => (
                     <li key={idx}>{asm}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="p-3.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                <div className="font-semibold text-slate-400 text-xs mb-1.5 uppercase">
+              <div className="p-3.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                <div className="font-semibold text-zinc-400 text-xs mb-1.5 uppercase">
                   {t('powerBalance.formulaUsed')} :
                 </div>
-                <div className="p-2 rounded-md bg-slate-50 dark:bg-slate-950 font-mono text-xs text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-200/60 dark:border-slate-800">
+                <div className="p-2 rounded-md bg-zinc-50 dark:bg-zinc-900 font-mono text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed border border-zinc-200 dark:border-zinc-800">
                   {pb.trace.formulaRef}
                 </div>
               </div>

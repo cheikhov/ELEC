@@ -1,6 +1,7 @@
 /**
  * SMART ELEC — Modern Projects Management Page
  * Section 5: Filterable data table, instant search, modern actions.
+ * Inspired by Tailwind UI / shadcn/ui dark mode.
  */
 
 import React, { useState, useMemo } from 'react';
@@ -13,7 +14,6 @@ import { StatusBadge } from '../components/ui/StatusBadge';
 import { EmptyState } from '../components/ui/EmptyState';
 import {
   FolderIcon,
-  PlusIcon,
   TrashIcon,
   CopyIcon,
   AlertTriangleIcon,
@@ -62,41 +62,31 @@ export const ProjectsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
             {t('projects.title')}
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
             {filteredProjects.length} projet(s) répertorié(s) • Base de données locale sécurisée
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          {projects.length === 0 && (
-            <button
-              type="button"
-              onClick={loadDemo}
-              className="eng-btn"
-            >
-              Charger démo
-            </button>
-          )}
+        {projects.length === 0 && (
           <button
             type="button"
-            onClick={() => setActiveTab('wizard')}
-            className="eng-btn-primary"
+            onClick={loadDemo}
+            className="eng-btn"
           >
-            <PlusIcon className="w-4 h-4" />
-            <span>{t('projects.newProject')}</span>
+            Charger projet démo
           </button>
-        </div>
+        )}
       </div>
 
       {/* Modern Filter & Search Bar */}
-      <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+      <div className="p-4 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
         <div className="flex-1 max-w-md relative">
           <input
             type="text"
@@ -105,7 +95,7 @@ export const ProjectsPage: React.FC = () => {
             placeholder={t('projects.searchPlaceholder')}
             className="eng-input w-full pl-9"
           />
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
             <SearchIcon className="w-4 h-4" />
           </div>
         </div>
@@ -155,7 +145,7 @@ export const ProjectsPage: React.FC = () => {
 
       {/* Modern Data Table */}
       {filteredProjects.length > 0 ? (
-        <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/70 overflow-hidden shadow-xs">
+        <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="eng-table">
               <thead>
@@ -182,45 +172,45 @@ export const ProjectsPage: React.FC = () => {
                       <td>
                         <div className="flex items-center gap-2">
                           {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />}
-                          <span className="font-semibold text-slate-900 dark:text-white">{p.name}</span>
+                          <span className="font-medium text-zinc-900 dark:text-zinc-100">{p.name}</span>
                           {p.isDemo && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                            <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
                               DEMO
                             </span>
                           )}
                           {p.projectType === 'hospital' && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1">
+                            <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1">
                               <AlertTriangleIcon className="w-2.5 h-2.5" />
                               Hôpital
                             </span>
                           )}
                         </div>
-                        <div className="text-xs text-slate-400 dark:text-slate-500 truncate max-w-sm mt-0.5">
+                        <div className="text-xs text-zinc-400 dark:text-zinc-500 truncate max-w-sm mt-0.5">
                           {p.description || p.address}
                         </div>
                       </td>
 
                       <td>
-                        <div className="text-slate-800 dark:text-slate-200">{p.client}</div>
-                        <div className="text-xs text-slate-400 dark:text-slate-500">{p.address}</div>
+                        <div className="text-zinc-800 dark:text-zinc-200">{p.client}</div>
+                        <div className="text-xs text-zinc-400 dark:text-zinc-500">{p.address}</div>
                       </td>
 
-                      <td className="text-slate-600 dark:text-slate-400">
+                      <td className="text-zinc-600 dark:text-zinc-400">
                         {t(`projects.types.${p.projectType}`)}
                       </td>
 
-                      <td className="font-mono text-slate-700 dark:text-slate-300 text-xs">
+                      <td className="font-mono text-zinc-700 dark:text-zinc-300 text-xs">
                         <div>{p.network.supplyVoltage} V {p.network.phaseType === 'three_phase' ? 'Triphasé' : 'Monophasé'}</div>
-                        <div className="text-[11px] text-slate-400 dark:text-slate-500">{p.network.neutralSystem || 'SLT non défini'} • {p.network.frequency} Hz</div>
+                        <div className="text-[11px] text-zinc-400 dark:text-zinc-500">{p.network.neutralSystem || 'SLT non défini'} • {p.network.frequency} Hz</div>
                       </td>
 
                       <td className="text-center">
                         <StatusBadge status={p.status} />
                       </td>
 
-                      <td className="font-mono text-xs text-slate-500 dark:text-slate-400">
+                      <td className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
                         <div>{formatDate(p.updatedAt)}</div>
-                        <div className="text-[10px] text-slate-400 dark:text-slate-500">Créé : {formatDate(p.createdAt)}</div>
+                        <div className="text-[10px] text-zinc-400 dark:text-zinc-500">Créé : {formatDate(p.createdAt)}</div>
                       </td>
 
                       <td className="text-right">
@@ -236,7 +226,7 @@ export const ProjectsPage: React.FC = () => {
                             type="button"
                             onClick={e => handleDuplicate(e, p.id)}
                             title={t('common.duplicate')}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                           >
                             <CopyIcon className="w-4 h-4" />
                           </button>
@@ -244,7 +234,7 @@ export const ProjectsPage: React.FC = () => {
                             type="button"
                             onClick={e => handleDelete(e, p.id)}
                             title={t('common.delete')}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                            className="p-1.5 rounded-lg text-zinc-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
                           >
                             <TrashIcon className="w-4 h-4" />
                           </button>
@@ -262,7 +252,7 @@ export const ProjectsPage: React.FC = () => {
           icon={<FolderIcon className="w-6 h-6" />}
           title={t('projects.emptyTitle')}
           description={t('projects.emptyDesc')}
-          actionLabel={t('projects.newProject')}
+          actionLabel="Créer un nouveau projet"
           onAction={() => setActiveTab('wizard')}
           secondaryActionLabel={projects.length === 0 ? t('dashboard.loadDemoBtn') : undefined}
           onSecondaryAction={projects.length === 0 ? loadDemo : undefined}

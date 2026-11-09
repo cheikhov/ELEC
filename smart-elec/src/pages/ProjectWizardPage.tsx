@@ -1,6 +1,7 @@
 /**
  * SMART ELEC — Modern Project Creation Wizard
  * Section 6: 3-step technical configuration with IEC validation and hospital mode alerts.
+ * Inspired by Tailwind UI / shadcn/ui dark mode.
  */
 
 import React, { useState } from 'react';
@@ -99,13 +100,13 @@ export const ProjectWizardPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-5">
+    <div className="max-w-3xl mx-auto space-y-6">
       {/* Header */}
-      <div className="pb-2 border-b border-slate-200 dark:border-slate-800/80">
-        <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+      <div className="pb-2 border-b border-zinc-200 dark:border-zinc-800">
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           {t('projectWizard.title')}
         </h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
           {step === 1 && t('projectWizard.step1Desc')}
           {step === 2 && t('projectWizard.step2Desc')}
           {step === 3 && t('projectWizard.step3Desc')}
@@ -113,20 +114,20 @@ export const ProjectWizardPage: React.FC = () => {
       </div>
 
       {/* Modern Segmented Progress Bar */}
-      <div className="grid grid-cols-3 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-100/60 dark:bg-slate-900/60 p-1 gap-1 text-xs font-medium">
+      <div className="grid grid-cols-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100/60 dark:bg-zinc-900/60 p-1 gap-1 text-xs font-medium">
         <button
           type="button"
           onClick={() => step > 1 && setStep(1)}
           className={`py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-2 ${
             step === 1
-              ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
+              ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold shadow-xs'
               : step > 1
-              ? 'text-emerald-600 dark:text-emerald-400 hover:text-slate-900 cursor-pointer'
-              : 'text-slate-400 dark:text-slate-500'
+              ? 'text-emerald-600 dark:text-emerald-400 hover:text-zinc-900 cursor-pointer'
+              : 'text-zinc-400 dark:text-zinc-500'
           }`}
         >
           <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold ${
-            step > 1 ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : step === 1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'
+            step > 1 ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : step === 1 ? 'bg-emerald-600 text-white' : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-500'
           }`}>
             {step > 1 ? '✓' : '1'}
           </span>
@@ -138,14 +139,14 @@ export const ProjectWizardPage: React.FC = () => {
           onClick={() => step > 2 && setStep(2)}
           className={`py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-2 ${
             step === 2
-              ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
+              ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold shadow-xs'
               : step > 2
-              ? 'text-emerald-600 dark:text-emerald-400 hover:text-slate-900 cursor-pointer'
-              : 'text-slate-400 dark:text-slate-500'
+              ? 'text-emerald-600 dark:text-emerald-400 hover:text-zinc-900 cursor-pointer'
+              : 'text-zinc-400 dark:text-zinc-500'
           }`}
         >
           <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold ${
-            step > 2 ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : step === 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'
+            step > 2 ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : step === 2 ? 'bg-emerald-600 text-white' : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-500'
           }`}>
             {step > 2 ? '✓' : '2'}
           </span>
@@ -156,12 +157,12 @@ export const ProjectWizardPage: React.FC = () => {
           type="button"
           className={`py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-2 ${
             step === 3
-              ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
-              : 'text-slate-400 dark:text-slate-500'
+              ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold shadow-xs'
+              : 'text-zinc-400 dark:text-zinc-500'
           }`}
         >
           <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold ${
-            step === 3 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'
+            step === 3 ? 'bg-emerald-600 text-white' : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-500'
           }`}>
             3
           </span>
@@ -186,9 +187,9 @@ export const ProjectWizardPage: React.FC = () => {
 
       {/* Step 1: Project Information */}
       {step === 1 && (
-        <div className="p-6 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs space-y-4">
+        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
               {t('projectWizard.projectName')} *
             </label>
             <input
@@ -202,7 +203,7 @@ export const ProjectWizardPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.client')} *
               </label>
               <input
@@ -215,7 +216,7 @@ export const ProjectWizardPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.address')}
               </label>
               <input
@@ -229,7 +230,7 @@ export const ProjectWizardPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
               {t('projectWizard.projectType')}
             </label>
             <select
@@ -261,7 +262,7 @@ export const ProjectWizardPage: React.FC = () => {
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
               {t('projectWizard.description')}
             </label>
             <textarea
@@ -273,7 +274,7 @@ export const ProjectWizardPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-zinc-100 dark:border-zinc-800">
             <button
               type="button"
               onClick={() => setActiveTab('projects')}
@@ -294,10 +295,10 @@ export const ProjectWizardPage: React.FC = () => {
 
       {/* Step 2: Electrical Network */}
       {step === 2 && (
-        <div className="p-6 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs space-y-4">
+        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.supplyVoltage')} *
               </label>
               <div className="flex gap-2">
@@ -325,7 +326,7 @@ export const ProjectWizardPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.phaseType')}
               </label>
               <select
@@ -341,7 +342,7 @@ export const ProjectWizardPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.frequency')}
               </label>
               <select
@@ -355,7 +356,7 @@ export const ProjectWizardPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
                 {t('projectWizard.neutralSystem')} (SLT)
               </label>
               <select
@@ -369,14 +370,14 @@ export const ProjectWizardPage: React.FC = () => {
                 <option value="TN-C-S">TN-C-S</option>
                 <option value="IT">IT (Neutre isolé ou impédant - Hôpitaux / Process)</option>
               </select>
-              <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
+              <p className="text-[11px] text-zinc-400 dark:text-zinc-500 mt-1">
                 {t('projectWizard.neutralSystemHint')}
               </p>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
               {t('projectWizard.networkNotes')}
             </label>
             <textarea
@@ -388,7 +389,7 @@ export const ProjectWizardPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800/80">
+          <div className="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-zinc-800">
             <button
               type="button"
               onClick={() => setStep(1)}
@@ -409,25 +410,25 @@ export const ProjectWizardPage: React.FC = () => {
 
       {/* Step 3: Assumptions & Traceability */}
       {step === 3 && (
-        <div className="p-6 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/80 shadow-xs space-y-4">
+        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-4">
           <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
               {t('projectWizard.assumptionsTitle')}
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
               {t('projectWizard.assumptionsDesc')}
             </p>
           </div>
 
           {/* Classification Key */}
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-mono">
-            <div className="p-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+          <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 text-xs grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-mono">
+            <div className="p-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300">
               [ Donnée Utilisateur ]
             </div>
             <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-semibold">
               [ Valeur Calculée ]
             </div>
-            <div className="p-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+            <div className="p-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300">
               [ Hypothèse Formelle ]
             </div>
             <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400">
@@ -440,16 +441,16 @@ export const ProjectWizardPage: React.FC = () => {
             {assumptions.map((asm, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs"
+                className="flex items-center justify-between gap-3 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 text-xs"
               >
                 <div className="flex items-center gap-2.5">
                   <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">HYP-{idx + 1}</span>
-                  <span className="text-slate-800 dark:text-slate-200">{asm}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{asm}</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleRemoveAssumption(idx)}
-                  className="text-slate-400 hover:text-rose-600 p-1"
+                  className="text-zinc-400 hover:text-rose-600 p-1"
                   title="Supprimer"
                 >
                   <TrashIcon className="w-4 h-4" />
@@ -478,7 +479,7 @@ export const ProjectWizardPage: React.FC = () => {
             </button>
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800/80">
+          <div className="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-zinc-800">
             <button
               type="button"
               onClick={() => setStep(2)}

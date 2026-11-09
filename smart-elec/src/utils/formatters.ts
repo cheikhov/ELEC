@@ -65,10 +65,10 @@ export function getStatusBadgeStyle(status: ProjectStatus): { bg: string; text: 
       };
     case 'archived':
       return {
-        bg: 'bg-slate-500/10',
-        text: 'text-slate-600 dark:text-slate-400',
-        border: 'border-slate-500/20',
-        dot: 'bg-slate-400',
+        bg: 'bg-zinc-100 dark:bg-zinc-800',
+        text: 'text-zinc-600 dark:text-zinc-400',
+        border: 'border-zinc-200 dark:border-zinc-700',
+        dot: 'bg-zinc-400',
       };
     case 'draft':
     default:
@@ -106,9 +106,9 @@ export function getValidationBadgeStyle(status: ValidationStatus): { bg: string;
       };
     case 'incomplete':
       return {
-        bg: 'bg-slate-500/10',
-        text: 'text-slate-600 dark:text-slate-400',
-        border: 'border-slate-500/20',
+        bg: 'bg-zinc-100 dark:bg-zinc-800',
+        text: 'text-zinc-600 dark:text-zinc-400',
+        border: 'border-zinc-200 dark:border-zinc-700',
         icon: '○',
       };
     case 'missing_data':

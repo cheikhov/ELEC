@@ -1,6 +1,6 @@
 /**
  * SMART ELEC — CalculationCard Component
- * Sleek, modern technical metric widget with tabular numbers, formula reference, and compliance tag.
+ * Modern B2B SaaS metric widget with clean typography, tabular values, and formula citations.
  */
 
 import React from 'react';
@@ -33,41 +33,41 @@ export const CalculationCard: React.FC<CalculationCardProps> = ({
 }) => {
   return (
     <div
-      className={`p-3 rounded-lg border transition-all ${
+      className={`p-5 rounded-xl border transition-all ${
         highlight
-          ? 'bg-emerald-500/[0.03] dark:bg-emerald-500/[0.05] border-emerald-500/40 dark:border-emerald-500/30'
-          : 'bg-white dark:bg-slate-900/70 border-slate-200 dark:border-slate-800/80'
+          ? 'bg-emerald-500/[0.04] border-emerald-500/30 shadow-xs'
+          : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 shadow-xs'
       } ${className}`}
     >
-      <div className="flex items-center justify-between gap-1 mb-1">
-        <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 truncate">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 truncate">
           {label}
         </span>
         {status && <ValidationBadge status={status} label={statusLabel} />}
       </div>
 
       <div className="flex items-baseline gap-1.5 my-1">
-        <span className={`text-xl font-bold font-mono tracking-tight tabular-nums ${
-          highlight ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-900 dark:text-slate-100'
+        <span className={`text-2xl font-semibold font-mono tracking-tight tabular-nums ${
+          highlight ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-900 dark:text-zinc-100'
         }`}>
           {value}
         </span>
         {unit && (
-          <span className="text-xs font-mono font-medium text-slate-400 dark:text-slate-500">
+          <span className="text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400">
             {unit}
           </span>
         )}
       </div>
 
       {secondaryInfo && (
-        <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+        <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
           {secondaryInfo}
         </div>
       )}
 
       {formula && (
         <div
-          className="mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/60 text-[10px] font-mono text-slate-400 dark:text-slate-500 truncate"
+          className="mt-3 pt-2 border-t border-zinc-100 dark:border-zinc-800/80 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 truncate"
           title={formula}
         >
           {formula}

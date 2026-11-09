@@ -60,14 +60,14 @@ export const ReportsPage: React.FC = () => {
   const protections = currentProject.calculations.protectionRecommendations;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200 dark:border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-zinc-200 dark:border-zinc-800">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
             {t('reports.title')}
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
             {t('reports.subtitle')} • Conforme aux exigences de présentation CEI / CREG
           </p>
         </div>
@@ -95,8 +95,8 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Mandatory Disclaimer Callout per Section 13 */}
-      <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-900 dark:text-amber-200 space-y-1.5">
-        <div className="font-bold flex items-center gap-2 text-amber-800 dark:text-amber-300">
+      <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200 space-y-1.5">
+        <div className="font-semibold flex items-center gap-2 text-amber-800 dark:text-amber-300">
           <AlertTriangleIcon className="w-4 h-4 text-amber-500 shrink-0" />
           <span>{t('reports.disclaimerTitle')}</span>
         </div>
@@ -106,36 +106,36 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Report Document Preview Sheet */}
-      <div className="p-6 md:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md space-y-5 max-w-4xl mx-auto font-sans">
+      <div className="p-6 md:p-10 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-card space-y-6 max-w-4xl mx-auto font-sans">
         {/* Title Block Header (Cartouche d'ingénierie) */}
-        <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-800 text-xs">
-          <div className="p-4 bg-slate-50 dark:bg-slate-950/60">
-            <div className="text-lg font-extrabold tracking-wider text-slate-900 dark:text-white font-mono">
+        <div className="border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-zinc-200 dark:divide-zinc-800 text-xs">
+          <div className="p-4 bg-zinc-50 dark:bg-zinc-950/60">
+            <div className="text-lg font-bold tracking-wider text-zinc-900 dark:text-zinc-100 font-mono">
               SMART ELEC
             </div>
-            <div className="text-[11px] text-slate-500 uppercase tracking-tight mt-0.5">
+            <div className="text-[11px] text-zinc-500 uppercase tracking-tight mt-0.5">
               Logiciel d'Études Électriques BT
             </div>
-            <div className="text-[11px] font-mono text-slate-400 mt-1">
+            <div className="text-[11px] font-mono text-zinc-400 mt-1">
               Norme CEI 60364 / CREG
             </div>
           </div>
 
           <div className="p-4">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Projet & Affaire</div>
-            <div className="font-bold text-slate-900 dark:text-white text-sm mt-0.5 truncate">
+            <div className="text-[10px] text-zinc-400 uppercase font-semibold">Projet & Affaire</div>
+            <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm mt-0.5 truncate">
               {currentProject.name}
             </div>
-            <div className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+            <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
               Client : {currentProject.client}
             </div>
-            <div className="text-xs text-slate-400 mt-0.5">
+            <div className="text-xs text-zinc-400 mt-0.5">
               {currentProject.address}
             </div>
           </div>
 
-          <div className="p-4 font-mono text-xs space-y-1 bg-slate-50 dark:bg-slate-950/60">
-            <div>Réf: <strong className="text-slate-900 dark:text-white">SE-{currentProject.id.substring(0, 8).toUpperCase()}</strong></div>
+          <div className="p-4 font-mono text-xs space-y-1 bg-zinc-50 dark:bg-zinc-950/60">
+            <div>Réf: <strong className="text-zinc-900 dark:text-zinc-100">SE-{currentProject.id.substring(0, 8).toUpperCase()}</strong></div>
             <div>Date : {formatDate(new Date().toISOString())}</div>
             <div>Statut : <strong className="uppercase text-emerald-600 dark:text-emerald-400">{currentProject.status}</strong></div>
             <div>Version : 1.0.0 Pro</div>
@@ -144,27 +144,27 @@ export const ReportsPage: React.FC = () => {
 
         {/* Technical Summary Strip */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
-            <div className="text-[11px] text-slate-400 uppercase font-sans">Tension & Régime</div>
-            <div className="font-bold text-slate-900 dark:text-white mt-1">
+          <div className="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
+            <div className="text-[11px] text-zinc-400 uppercase font-sans">Tension & Régime</div>
+            <div className="font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
               {currentProject.network.supplyVoltage}V {currentProject.network.phaseType === 'three_phase' ? '3P+N' : '1P+N'} • {currentProject.network.neutralSystem || 'TT'}
             </div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
-            <div className="text-[11px] text-slate-400 uppercase font-sans">P. Demandée (P)</div>
-            <div className="font-bold text-emerald-600 dark:text-emerald-400 mt-1">
+          <div className="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
+            <div className="text-[11px] text-zinc-400 uppercase font-sans">P. Demandée (P)</div>
+            <div className="font-semibold text-emerald-600 dark:text-emerald-400 mt-1">
               {pb ? formatPower(pb.demandPower_kW, 'kW') : '—'}
             </div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
-            <div className="text-[11px] text-slate-400 uppercase font-sans">P. Apparente (S)</div>
-            <div className="font-bold text-slate-900 dark:text-white mt-1">
+          <div className="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
+            <div className="text-[11px] text-zinc-400 uppercase font-sans">P. Apparente (S)</div>
+            <div className="font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
               {pb ? `${pb.apparentPower_kVA} kVA` : '—'}
             </div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
-            <div className="text-[11px] text-slate-400 uppercase font-sans">Courant Emploi (Ib)</div>
-            <div className="font-bold text-slate-900 dark:text-white mt-1">
+          <div className="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
+            <div className="text-[11px] text-zinc-400 uppercase font-sans">Courant Emploi (Ib)</div>
+            <div className="font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
               {pb ? formatCurrent(pb.estimatedCurrent_A) : '—'}
             </div>
           </div>
@@ -172,11 +172,11 @@ export const ReportsPage: React.FC = () => {
 
         {/* Section 1: Power Balance Summary */}
         <div className="space-y-2 pt-2">
-          <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">
+          <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
             1. Synthèse du Bilan de Puissance (CEI 60364-1)
           </h3>
           {pb ? (
-            <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
               <table className="eng-table">
                 <thead>
                   <tr>
@@ -190,59 +190,59 @@ export const ReportsPage: React.FC = () => {
                 <tbody>
                   <tr>
                     <td>Puissance installée totale</td>
-                    <td className="font-mono text-xs text-slate-500">Σ (P_unit × Qty)</td>
+                    <td className="font-mono text-xs text-zinc-500">Σ (P_unit × Qty)</td>
                     <td className="text-right font-mono font-medium">{formatPower(pb.installedPower_kW, 'kW')}</td>
                     <td className="font-mono text-xs">kW</td>
-                    <td className="text-center font-mono text-xs text-emerald-600 font-bold">✓ CONFORME</td>
+                    <td className="text-center font-mono text-xs text-emerald-600 font-semibold">✓ CONFORME</td>
                   </tr>
                   <tr>
                     <td>Puissance demandée</td>
-                    <td className="font-mono text-xs text-slate-500">Σ (P_inst × Ku × Ks)</td>
-                    <td className="text-right font-mono font-bold text-emerald-600 dark:text-emerald-400">{formatPower(pb.demandPower_kW, 'kW')}</td>
+                    <td className="font-mono text-xs text-zinc-500">Σ (P_inst × Ku × Ks)</td>
+                    <td className="text-right font-mono font-semibold text-emerald-600 dark:text-emerald-400">{formatPower(pb.demandPower_kW, 'kW')}</td>
                     <td className="font-mono text-xs">kW</td>
-                    <td className="text-center font-mono text-xs text-emerald-600 font-bold">✓ CONFORME</td>
+                    <td className="text-center font-mono text-xs text-emerald-600 font-semibold">✓ CONFORME</td>
                   </tr>
                   <tr>
                     <td>Puissance apparente</td>
-                    <td className="font-mono text-xs text-slate-500">S = √(P² + Q²)</td>
+                    <td className="font-mono text-xs text-zinc-500">S = √(P² + Q²)</td>
                     <td className="text-right font-mono font-medium">{pb.apparentPower_kVA}</td>
                     <td className="font-mono text-xs">kVA</td>
-                    <td className="text-center font-mono text-xs text-emerald-600 font-bold">✓ CONFORME</td>
+                    <td className="text-center font-mono text-xs text-emerald-600 font-semibold">✓ CONFORME</td>
                   </tr>
                   <tr>
                     <td>Courant d'emploi présumé (Ib)</td>
-                    <td className="font-mono text-xs text-slate-500">S / (√3 × U)</td>
+                    <td className="font-mono text-xs text-zinc-500">S / (√3 × U)</td>
                     <td className="text-right font-mono font-medium">{formatCurrent(pb.estimatedCurrent_A)}</td>
                     <td className="font-mono text-xs">A</td>
-                    <td className="text-center font-mono text-xs text-emerald-600 font-bold">✓ CONFORME</td>
+                    <td className="text-center font-mono text-xs text-emerald-600 font-semibold">✓ CONFORME</td>
                   </tr>
                   <tr>
                     <td>Facteur de puissance moyen</td>
-                    <td className="font-mono text-xs text-slate-500">cos(arctan(Q/P))</td>
+                    <td className="font-mono text-xs text-zinc-500">cos(arctan(Q/P))</td>
                     <td className="text-right font-mono font-medium">{pb.powerFactor}</td>
                     <td className="font-mono text-xs">—</td>
-                    <td className="text-center font-mono text-xs text-emerald-600 font-bold">✓ CONFORME</td>
+                    <td className="text-center font-mono text-xs text-emerald-600 font-semibold">✓ CONFORME</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           ) : (
-            <div className="text-xs text-slate-400 italic">Aucun calcul exécuté.</div>
+            <div className="text-xs text-zinc-400 italic">Aucun calcul exécuté.</div>
           )}
         </div>
 
         {/* Section 2: Generator & Cable Sizing */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
           <div className="space-y-2">
-            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">
+            <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
               2. Groupe Électrogène (Estimation)
             </h3>
             {gen ? (
-              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-1 text-xs font-mono">
+              <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-1 text-xs font-mono">
                 <div>Régime permanent : <strong>{gen.steadyStatePower_kW} kW ({gen.steadyStatePower_kVA} kVA)</strong></div>
                 <div>Appel de démarrage : <strong>{gen.transientPower_kVA} kVA</strong></div>
                 <div>Marge technique retenue : <strong>{(gen.engineeringMargin * 100).toFixed(0)} %</strong></div>
-                <div className="pt-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+                <div className="pt-1.5 text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
                   Puissance recommandée : {gen.recommendedSize_kVA} kVA
                 </div>
               </div>
@@ -250,15 +250,15 @@ export const ReportsPage: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">
+            <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
               3. Câble d'Alimentation Principal
             </h3>
             {cable ? (
-              <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-1 text-xs font-mono">
+              <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 space-y-1 text-xs font-mono">
                 <div>Courant d'emploi Ib : <strong>{cable.trace.inputs['Load current (A)']} A</strong></div>
                 <div>Longueur de liaison : <strong>{cable.trace.inputs['Cable length (m)']} m</strong></div>
                 <div>Chute de tension : <strong>{cable.voltageDrop_percent} % ({cable.voltageDrop_V} V)</strong></div>
-                <div className="pt-1.5 text-slate-900 dark:text-white font-bold text-sm">
+                <div className="pt-1.5 text-zinc-900 dark:text-zinc-100 font-semibold text-sm">
                   Section proposée : {formatSection(cable.proposedSection_mm2)}
                 </div>
               </div>
@@ -269,10 +269,10 @@ export const ReportsPage: React.FC = () => {
         {/* Section 3: Protections */}
         {protections && protections.length > 0 && (
           <div className="space-y-2 pt-2">
-            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1.5">
+            <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
               4. Appareillage de Protection Recommandé
             </h3>
-            <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
               <table className="eng-table">
                 <thead>
                   <tr>
@@ -285,10 +285,10 @@ export const ReportsPage: React.FC = () => {
                 <tbody>
                   {protections.map((p, idx) => (
                     <tr key={idx}>
-                      <td className="font-bold text-slate-900 dark:text-white">{p.deviceType.replace('_', ' ').toUpperCase()}</td>
-                      <td className="text-right font-mono font-bold">{p.nominalCurrent_A} A</td>
+                      <td className="font-semibold text-zinc-900 dark:text-zinc-100">{p.deviceType.replace('_', ' ').toUpperCase()}</td>
+                      <td className="text-right font-mono font-semibold">{p.nominalCurrent_A} A</td>
                       <td className="font-mono">{p.tripCurve ? `Courbe ${p.tripCurve}` : p.rcdSensitivity_mA ? `${p.rcdSensitivity_mA} mA` : '—'}</td>
-                      <td className="text-slate-600 dark:text-slate-400 text-xs">{p.notes[0]}</td>
+                      <td className="text-zinc-600 dark:text-zinc-400 text-xs">{p.notes[0]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -298,8 +298,8 @@ export const ReportsPage: React.FC = () => {
         )}
 
         {/* Standards List */}
-        <div className="pt-4 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1">
-          <div className="font-semibold text-slate-700 dark:text-slate-300">
+        <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 space-y-1">
+          <div className="font-semibold text-zinc-700 dark:text-zinc-300">
             {t('reports.standardsRefTitle')}
           </div>
           <p className="leading-relaxed">
@@ -308,14 +308,14 @@ export const ReportsPage: React.FC = () => {
         </div>
 
         {/* Formal Sign-off Box */}
-        <div className="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-6 text-xs text-center">
-          <div className="p-4 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 h-28 flex flex-col justify-between">
-            <span className="font-semibold text-slate-700 dark:text-slate-300 uppercase text-[11px]">Pour le Bureau d'Études / L'Ingénieur</span>
-            <span className="text-[11px] text-slate-400 italic">Signature & Cachet</span>
+        <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-2 gap-6 text-xs text-center">
+          <div className="p-4 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-700 h-28 flex flex-col justify-between">
+            <span className="font-semibold text-zinc-700 dark:text-zinc-300 uppercase text-[11px]">Pour le Bureau d'Études / L'Ingénieur</span>
+            <span className="text-[11px] text-zinc-400 italic">Signature & Cachet</span>
           </div>
-          <div className="p-4 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 h-28 flex flex-col justify-between">
-            <span className="font-semibold text-slate-700 dark:text-slate-300 uppercase text-[11px]">Pour le Maître d'Ouvrage / L'Entreprise</span>
-            <span className="text-[11px] text-slate-400 italic">Visa pour exécution</span>
+          <div className="p-4 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-700 h-28 flex flex-col justify-between">
+            <span className="font-semibold text-zinc-700 dark:text-zinc-300 uppercase text-[11px]">Pour le Maître d'Ouvrage / L'Entreprise</span>
+            <span className="text-[11px] text-zinc-400 italic">Visa pour exécution</span>
           </div>
         </div>
       </div>
