@@ -22,8 +22,13 @@ import {
 
 export const DashboardPage: React.FC = () => {
   const { projects, currentProject, setCurrentProjectId, loadDemo } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
+
+  const handleLoadDemo = () => {
+    loadDemo();
+    notify('Projet démo (Hôpital Naama) chargé avec succès', 'success');
+  };
 
   const totalProjects = projects.length;
   const hospitalProjects = projects.filter(p => p.projectType === 'hospital');
@@ -60,7 +65,7 @@ export const DashboardPage: React.FC = () => {
         {projects.length === 0 && (
           <button
             type="button"
-            onClick={loadDemo}
+            onClick={handleLoadDemo}
             className="eng-btn"
           >
             Charger projet démo
@@ -87,7 +92,7 @@ export const DashboardPage: React.FC = () => {
       {totalProjects > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Card 1: Total Projects */}
-          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card">
+          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors bg-white dark:bg-zinc-900 shadow-card">
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {t('dashboard.totalProjects')}
@@ -105,7 +110,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Card 2: Attention Warnings */}
-          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card">
+          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors bg-white dark:bg-zinc-900 shadow-card">
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {t('dashboard.projectsAttention')}
@@ -123,7 +128,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Card 3: Calculations Executed */}
-          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card">
+          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors bg-white dark:bg-zinc-900 shadow-card">
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {t('dashboard.recentCalculations')}
@@ -141,7 +146,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Card 4: Reports */}
-          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-card">
+          <div className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors bg-white dark:bg-zinc-900 shadow-card">
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {t('dashboard.reportsGenerated')}

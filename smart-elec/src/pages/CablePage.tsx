@@ -27,7 +27,7 @@ import {
 
 export const CablePage: React.FC = () => {
   const { currentProject } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   const pb = currentProject?.calculations.powerBalance;
@@ -120,8 +120,11 @@ export const CablePage: React.FC = () => {
             {pb && pb.estimatedCurrent_A > 0 && (
               <button
                 type="button"
-                onClick={() => setLoadCurrent_A(pb.estimatedCurrent_A)}
-                className="text-xs text-emerald-600 dark:text-emerald-400 font-medium hover:underline"
+                onClick={() => {
+                  setLoadCurrent_A(pb.estimatedCurrent_A);
+                  notify(`Courant Ib synchronisé depuis le bilan (${pb.estimatedCurrent_A} A)`, 'success');
+                }}
+                className="text-xs text-emerald-600 dark:text-emerald-400 font-medium hover:underline cursor-pointer"
               >
                 Sync Bilan ({pb.estimatedCurrent_A} A)
               </button>

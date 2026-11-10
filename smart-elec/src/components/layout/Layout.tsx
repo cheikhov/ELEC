@@ -7,6 +7,8 @@
 import React from 'react';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
+import { StudyStepper } from './StudyStepper';
+import { ToastContainer } from '../ui/ToastContainer';
 import { useI18n } from '../../i18n';
 
 interface LayoutProps {
@@ -25,6 +27,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Header />
 
         <main className="flex-1 p-5 sm:p-6 md:p-8 w-full mx-auto max-w-7xl">
+          <StudyStepper />
           {children}
         </main>
 
@@ -35,6 +38,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </footer>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

@@ -19,7 +19,7 @@ import {
 
 export const ReportsPage: React.FC = () => {
   const { currentProject } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t, language } = useI18n();
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -42,9 +42,10 @@ export const ReportsPage: React.FC = () => {
       const doc = generateTechnicalReportPDF(currentProject, language);
       const filename = `SMART_ELEC_Etude_${currentProject.name.replace(/\s+/g, '_')}_${new Date().toISOString().substring(0, 10)}.pdf`;
       doc.save(filename);
+      notify('Note technique PDF générée et téléchargée avec succès', 'success');
     } catch (e) {
       console.error('Failed to generate PDF:', e);
-      alert('Erreur lors de la génération du PDF. Utilisez l\'option Imprimer.');
+      notify('Erreur lors de la génération du PDF. Utilisez l\'option Imprimer.', 'error');
     } finally {
       setIsGenerating(false);
     }

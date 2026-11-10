@@ -28,22 +28,30 @@ export const CalculationCard: React.FC<CalculationCardProps> = ({
   status,
   statusLabel,
   secondaryInfo,
+  icon,
   highlight = false,
   className = '',
 }) => {
   return (
     <div
-      className={`p-5 rounded-xl border transition-all ${
+      className={`p-5 rounded-xl border transition-all duration-150 ${
         highlight
-          ? 'bg-emerald-500/[0.04] border-emerald-500/30 shadow-xs'
-          : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 shadow-xs'
+          ? 'bg-emerald-500/[0.04] border-emerald-500/30 hover:border-emerald-500/50 shadow-xs'
+          : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 shadow-xs'
       } ${className}`}
     >
       <div className="flex items-center justify-between gap-2 mb-2">
         <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 truncate">
           {label}
         </span>
-        {status && <ValidationBadge status={status} label={statusLabel} />}
+        <div className="flex items-center gap-2">
+          {status && <ValidationBadge status={status} label={statusLabel} />}
+          {icon && (
+            <div className="w-6 h-6 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 flex items-center justify-center shrink-0">
+              {icon}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="flex items-baseline gap-1.5 my-1">

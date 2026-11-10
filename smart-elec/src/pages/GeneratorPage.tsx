@@ -20,7 +20,7 @@ import {
 
 export const GeneratorPage: React.FC = () => {
   const { currentProject, updateProject } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   const [marginPct, setMarginPct] = useState(15);
@@ -47,6 +47,7 @@ export const GeneratorPage: React.FC = () => {
         generatorSizing: updatedGen,
       },
     });
+    notify(`Marge de sécurité mise à jour : ${newMargin}% (CEI 60034)`, 'info');
   };
 
   return (

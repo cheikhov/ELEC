@@ -29,7 +29,7 @@ import {
 
 export const LoadsPage: React.FC = () => {
   const { currentProject, addLoad, updateLoad, deleteLoad } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -127,8 +127,10 @@ export const LoadsPage: React.FC = () => {
 
     if (editingLoadId) {
       updateLoad(currentProject.id, editingLoadId, candidate);
+      notify('Charge modifiée avec succès', 'success');
     } else {
       addLoad(currentProject.id, candidate);
+      notify('Nouvelle charge ajoutée au bilan', 'success');
     }
 
     setIsModalOpen(false);
@@ -298,9 +300,12 @@ export const LoadsPage: React.FC = () => {
                           </button>
                           <button
                             type="button"
-                            onClick={() => deleteLoad(currentProject.id, load.id)}
+                            onClick={() => {
+                              deleteLoad(currentProject.id, load.id);
+                              notify('Charge supprimée du bilan', 'info');
+                            }}
                             title={t('common.delete')}
-                            className="p-1.5 rounded-lg text-zinc-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                            className="p-1.5 rounded-lg text-zinc-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
                           >
                             <TrashIcon className="w-4 h-4" />
                           </button>

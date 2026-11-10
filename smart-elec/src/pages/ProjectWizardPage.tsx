@@ -14,7 +14,7 @@ import { AlertTriangleIcon, CheckIcon, PlusIcon, TrashIcon } from '../components
 
 export const ProjectWizardPage: React.FC = () => {
   const { createProject } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -96,6 +96,7 @@ export const ProjectWizardPage: React.FC = () => {
     });
 
     // Go directly to load entry per Section 28
+    notify(`Projet « ${name} » configuré et créé avec succès`, 'success');
     setActiveTab('loads');
   };
 

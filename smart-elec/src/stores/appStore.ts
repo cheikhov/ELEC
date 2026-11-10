@@ -20,16 +20,27 @@ export type NavigationTab =
   | 'equipment'
   | 'reports';
 
+export interface ToastMessage {
+  id: string;
+  type: 'success' | 'info' | 'warning' | 'error';
+  title?: string;
+  message: string;
+  duration?: number;
+}
+
 export interface AppState {
   theme: 'light' | 'dark';
   sidebarOpen: boolean;
   activeTab: NavigationTab;
   currentUser: User;
+  toasts: ToastMessage[];
   toggleTheme: () => void;
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
   setActiveTab: (tab: NavigationTab) => void;
   setCurrentUserRole: (role: UserRole) => void;
+  notify: (message: string, type?: 'success' | 'info' | 'warning' | 'error', title?: string, duration?: number) => void;
+  dismissToast: (id: string) => void;
 }
 
 const DEFAULT_USER: User = {
@@ -51,11 +62,14 @@ const AppContext = createContext<AppState>({
   sidebarOpen: false,
   activeTab: 'dashboard',
   currentUser: DEFAULT_USER,
+  toasts: [],
   toggleTheme: () => {},
   toggleSidebar: () => {},
   setSidebarOpen: () => {},
   setActiveTab: () => {},
   setCurrentUserRole: () => {},
+  notify: () => {},
+  dismissToast: () => {},
 });
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -68,6 +82,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTab, setActiveTabState] = useState<NavigationTab>('dashboard');
   const [currentUser, setCurrentUser] = useState<User>(DEFAULT_USER);
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   useEffect(() => {
     localStorage.setItem('smart-elec-theme', theme);
@@ -77,6 +92,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       document.documentElement.classList.remove('dark');
     }
   }, [theme]);
+
+  const dismissToast = useCallback((id: string) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }, []);
+
+  const notify = useCallback((message: string, type: 'success' | 'info' | 'warning' | 'error' = 'success', title?: string, duration: number = 3500) => {
+    const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    const newToast: ToastMessage = { id, type, title, message, duration };
+    setToasts(prev => [...prev.slice(-4), newToast]); // keep at most 5 toasts
+
+    if (duration > 0) {
+      setTimeout(() => {
+        dismissToast(id);
+      }, duration);
+    }
+  }, [dismissToast]);
 
   const toggleTheme = useCallback(() => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
@@ -101,11 +132,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     sidebarOpen,
     activeTab,
     currentUser,
+    toasts,
     toggleTheme,
     toggleSidebar,
     setSidebarOpen,
     setActiveTab,
     setCurrentUserRole,
+    notify,
+    dismissToast,
   };
 
   return React.createElement(AppContext.Provider, { value }, children);

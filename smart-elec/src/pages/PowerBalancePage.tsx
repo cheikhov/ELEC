@@ -19,7 +19,7 @@ import {
 
 export const PowerBalancePage: React.FC = () => {
   const { currentProject, recalculateProject } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   if (!currentProject) {
@@ -57,8 +57,11 @@ export const PowerBalancePage: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => recalculateProject(currentProject.id)}
-            className="eng-btn"
+            onClick={() => {
+              recalculateProject(currentProject.id);
+              notify('Bilan de puissance recalculé (CEI 60364-1)', 'success');
+            }}
+            className="eng-btn cursor-pointer"
           >
             <CalculatorIcon className="w-4 h-4" />
             <span>{t('common.recalculate')}</span>

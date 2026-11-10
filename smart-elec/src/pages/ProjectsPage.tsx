@@ -22,7 +22,7 @@ import {
 
 export const ProjectsPage: React.FC = () => {
   const { projects, currentProjectId, setCurrentProjectId, duplicateProject, deleteProject, loadDemo } = useProjects();
-  const { setActiveTab } = useApp();
+  const { setActiveTab, notify } = useApp();
   const { t } = useI18n();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -52,13 +52,20 @@ export const ProjectsPage: React.FC = () => {
   const handleDuplicate = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     duplicateProject(id);
+    notify('Projet dupliqué avec succès', 'success');
   };
 
   const handleDelete = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     if (window.confirm(t('projects.confirmDelete'))) {
       deleteProject(id);
+      notify('Projet supprimé', 'info');
     }
+  };
+
+  const handleLoadDemo = () => {
+    loadDemo();
+    notify('Projet démo (Hôpital Naama) chargé avec succès', 'success');
   };
 
   return (
@@ -77,7 +84,7 @@ export const ProjectsPage: React.FC = () => {
         {projects.length === 0 && (
           <button
             type="button"
-            onClick={loadDemo}
+            onClick={handleLoadDemo}
             className="eng-btn"
           >
             Charger projet démo
