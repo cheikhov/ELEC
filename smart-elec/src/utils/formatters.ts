@@ -51,32 +51,32 @@ export function getStatusBadgeStyle(status: ProjectStatus): { bg: string; text: 
   switch (status) {
     case 'completed':
       return {
-        bg: 'bg-emerald-500/10',
-        text: 'text-emerald-700 dark:text-emerald-400',
-        border: 'border-emerald-500/20',
-        dot: 'bg-emerald-500',
+        bg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
+        text: 'text-emerald-700 dark:text-emerald-300',
+        border: 'border-emerald-500/30',
+        dot: 'bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]',
       };
     case 'in_progress':
       return {
-        bg: 'bg-blue-500/10',
-        text: 'text-blue-700 dark:text-blue-400',
-        border: 'border-blue-500/20',
-        dot: 'bg-blue-500',
+        bg: 'bg-sky-500/10 dark:bg-sky-500/15',
+        text: 'text-sky-700 dark:text-sky-300',
+        border: 'border-sky-500/30',
+        dot: 'bg-sky-500 shadow-[0_0_6px_rgba(14,165,233,0.5)]',
       };
     case 'archived':
       return {
-        bg: 'bg-zinc-100 dark:bg-zinc-800',
-        text: 'text-zinc-600 dark:text-zinc-400',
-        border: 'border-zinc-200 dark:border-zinc-700',
-        dot: 'bg-zinc-400',
+        bg: 'bg-slate-100 dark:bg-slate-800/80',
+        text: 'text-slate-600 dark:text-slate-400',
+        border: 'border-slate-200 dark:border-slate-700',
+        dot: 'bg-slate-400',
       };
     case 'draft':
     default:
       return {
-        bg: 'bg-amber-500/10',
-        text: 'text-amber-700 dark:text-amber-400',
-        border: 'border-amber-500/20',
-        dot: 'bg-amber-500',
+        bg: 'bg-amber-500/10 dark:bg-amber-500/15',
+        text: 'text-amber-700 dark:text-amber-300',
+        border: 'border-amber-500/30',
+        dot: 'bg-amber-500 shadow-[0_0_6px_rgba(245,158,11,0.5)]',
       };
   }
 }
@@ -85,39 +85,39 @@ export function getValidationBadgeStyle(status: ValidationStatus): { bg: string;
   switch (status) {
     case 'pass':
       return {
-        bg: 'bg-emerald-500/10',
-        text: 'text-emerald-700 dark:text-emerald-400',
-        border: 'border-emerald-500/20',
+        bg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
+        text: 'text-emerald-700 dark:text-emerald-300',
+        border: 'border-emerald-500/30',
         icon: '✓',
       };
     case 'fail':
       return {
-        bg: 'bg-rose-500/10',
-        text: 'text-rose-700 dark:text-rose-400',
-        border: 'border-rose-500/20',
+        bg: 'bg-rose-500/10 dark:bg-rose-500/15',
+        text: 'text-rose-700 dark:text-rose-300',
+        border: 'border-rose-500/30',
         icon: '✕',
       };
     case 'warning':
       return {
-        bg: 'bg-amber-500/10',
-        text: 'text-amber-700 dark:text-amber-400',
-        border: 'border-amber-500/20',
+        bg: 'bg-amber-500/10 dark:bg-amber-500/15',
+        text: 'text-amber-700 dark:text-amber-300',
+        border: 'border-amber-500/30',
         icon: '⚠',
       };
     case 'incomplete':
       return {
-        bg: 'bg-zinc-100 dark:bg-zinc-800',
-        text: 'text-zinc-600 dark:text-zinc-400',
-        border: 'border-zinc-200 dark:border-zinc-700',
+        bg: 'bg-slate-100 dark:bg-slate-800/80',
+        text: 'text-slate-600 dark:text-slate-400',
+        border: 'border-slate-200 dark:border-slate-700',
         icon: '○',
       };
     case 'missing_data':
     default:
       return {
-        bg: 'bg-rose-500/10',
-        text: 'text-rose-700 dark:text-rose-400',
-        border: 'border-rose-500/20',
-        icon: '?',
+        bg: 'bg-rose-500/10 dark:bg-rose-500/15',
+        text: 'text-rose-700 dark:text-rose-300',
+        border: 'border-rose-500/30',
+        icon: '!',
       };
   }
 }
